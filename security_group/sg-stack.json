@@ -1,0 +1,157 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "CloudFormation Stack - Security Groups",
+  "Resources": {
+    "elbsg": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "SecurityGroupIngress": [
+          {
+            "ToPort": 80,
+            "IpProtocol": "tcp",
+            "Description": "string",
+            "FromPort": 80,
+            "CidrIp": "string"
+          },
+          {
+            "ToPort": 80,
+            "IpProtocol": "tcp",
+            "Description": "string",
+            "FromPort": 80,
+            "CidrIp": "string"
+          },
+          {
+            "ToPort": 443,
+            "IpProtocol": "tcp",
+            "Description": "string",
+            "FromPort": 443,
+            "CidrIp": "string"
+          },
+          {
+            "ToPort": 443,
+            "IpProtocol": "tcp",
+            "Description": "string",
+            "FromPort": 443,
+            "CidrIp": "string"
+          }
+        ],
+        "Tags": [
+          {
+            "Value": "Development",
+            "Key": "environment"
+          },
+          {
+            "Value": "application-name",
+            "Key": "product"
+          },
+          {
+            "Key": "Name",
+            "Value": "elb-sg"
+          }
+        ],
+        "VpcId": "string",
+        "GroupDescription": "allows traffic to the server instances",
+        "SecurityGroupEgress": [
+          {
+            "ToPort": -1,
+            "IpProtocol": -1,
+            "FromPort": -1,
+            "CidrIp": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    "ec2sg": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "SecurityGroupIngress": [
+          {
+            "ToPort": 80,
+            "IpProtocol": "tcp",
+            "SourceSecurityGroupId": {
+              "Fn::GetAtt": [
+                "elbsg",
+                "GroupId"
+              ]
+            },
+            "Description": "string",
+            "FromPort": 80
+          },
+          {
+            "ToPort": 443,
+            "IpProtocol": "tcp",
+            "SourceSecurityGroupId": {
+              "Fn::GetAtt": [
+                "elbsg",
+                "GroupId"
+              ]
+            },
+            "Description": "string",
+            "FromPort": 443
+          },
+          {
+            "ToPort": 22,
+            "IpProtocol": "tcp",
+            "Description": "string",
+            "FromPort": 22,
+            "CidrIp": "CIDR"
+          }
+        ],
+        "Tags": [
+          {
+            "Value": "Development",
+            "Key": "environment"
+          },
+          {
+            "Value": "application-name",
+            "Key": "product"
+          },
+          {
+            "Key": "Name",
+            "Value": "ec2-sg"
+          }
+        ],
+        "VpcId": "string",
+        "GroupDescription": "allows traffic to the server instances",
+        "SecurityGroupEgress": [
+          {
+            "ToPort": -1,
+            "IpProtocol": -1,
+            "FromPort": -1,
+            "CidrIp": "0.0.0.0/0"
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "environment": {
+      "Description": "environment",
+      "Value": "Development"
+    },
+    "product": {
+      "Description": "product",
+      "Value": "application-name"
+    },
+    "accountNameConstruct": {
+      "Description": "account_name_construct",
+      "Value": "aws-account-name-dev-standard"
+    },
+    "appnameConstruct": {
+      "Description": "appname_construct",
+      "Value": "application-name"
+    },
+    "elbSg": {
+      "Description": "Security Group ID",
+      "Value": {
+        "Ref": "elbsg"
+      }
+    },
+    "ec2Sg": {
+      "Description": "Security Group ID",
+      "Value": {
+        "Ref": "ec2sg"
+      }
+    }
+  }
+}

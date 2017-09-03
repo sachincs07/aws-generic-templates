@@ -1,4 +1,4 @@
-# aws-generic-templates
+	# aws-generic-templates
 Developed by Sachin Singh Bhadauria
 
 These are generaic templates and their Input files to create different stacks in aws like Secutrity group, ELB , ASG
@@ -39,7 +39,8 @@ RDS Stack:
 During ASG/LC Cloudformation stack you may need to deal with userdata option also, as these are generic templates I will make them available as a seperate rpository to use later. But you can anytime use your userdata while creating asl-lc stack as our end goal is to make an ec2 which is capabele of handling certain tasks for us and that is achieved through passing userdata along with that.
 
 
-Thanks--
 
-All we know about the new economic world tells us that nations which train engineers will prevail over those which train lawyers. No nation has ever sued its way to greatness.
-― Richard Lamm
+
+#####################################################################################################################################
+All we know about the new economic world tells us that nations which train engineers will prevail over those which train lawyers. No nation has ever sued its way to greatness.  ― Richard Lamm
+#####################################################################################################################################
