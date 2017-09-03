@@ -41,6 +41,6 @@ During ASG/LC Cloudformation stack you may need to deal with userdata option als
 
 
 
-#####################################################################################################################################
+#######################################################################################
 All we know about the new economic world tells us that nations which train engineers will prevail over those which train lawyers. No nation has ever sued its way to greatness.  ― Richard Lamm
-#####################################################################################################################################
+#######################################################################################
