@@ -1,4 +1,4 @@
-	# aws-generic-templates
+# aws-generic-templates
 Developed by Sachin Singh Bhadauria
 
 These are generaic templates and their Input files to create different stacks in aws like Secutrity group, ELB , ASG
